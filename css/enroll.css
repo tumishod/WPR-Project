@@ -1,0 +1,19 @@
+/* Styles specific to enroll.html */
+#enrollmentForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-spacing);
+}
+
+#enrollmentForm input,
+#enrollmentForm button {
+    padding: var(--base-spacing);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#enrollmentForm button {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}

@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Belgium Campus</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="js/main.js"></script>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="#" id="searchCoursesLink">Search Courses</a></li>
+            <li><a href="#" id="viewCoursesLink">Courses</a></li>
+            <li><a href="#" id="viewCourseDetailsLink">Course Details</a></li>
+            <li><a href="#" id="viewModulesLink">Modules</a></li>
+            <li><a href="enroll.html">Enroll</a></li>
+        </ul>
+    </nav> 
+
+    <section id="search" style="display: none;">
+        <h1>Search Courses</h1>
+        <input type="text" id="searchBar" placeholder="Enter Course Name">
+        <button id="searchButton">Search</button>
+    </section>
     
+    <section id="courses">
+        <h2>Course List</h2>
+        <div id="courseList">
+            <!--Courses will be dynamically inserted here-->
+        </div>
+    </section>
+    
+    <section id="details" style="display: none;">
+        <h2>Course Details</h2>
+        <div id="courseDetails">
+            <!-- Course Details will be inserted here dynamically-->
+        </div>
+    </section>
+    
+    <section id="courseManagement" style="display: none;">
+        <h2>Course Management</h2>
+        <div id="moduleList">
+            <!-- Module list will be dynamically inserted here-->
+        </div>
+        <button id="printButton">Print Course</button>
+    </section>
 </body>
 </html>

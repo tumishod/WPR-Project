@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="js/enroll.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#enrollmentForm">Enroll</a></li>
+        </ul>
+    </nav>
+    <section id="enrollmentForm">
+        <h1>Enroll in a Course</h1>
+        <form id="enrollForm">
+            <label for="courseName">Course Name:</label>
+            <select id="courseName" name="courseName" required>
+                <option value="D456">Diploma</option>
+                <option value="BIT789">BIT</option>
+                <option value="BCOM101">BCOM</option>
+            </select>
+
+            <label for="firstName">First Name:</label>
+            <input type="text" name="firstName" id="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" name="lastName" id="lastName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="errorMessage" style="color:red; display:none;"></div>
+        <div id="countdown" style="display:none;">
+            <h2>Enrollment Successful!</h2>
+            <p>Your enrollment is confirmed. The course will start in:</p>
+            <p id="timer"></p>
+        </div>
+        <div id="confirmationMessage" style="display:none;">
+            <h2>Course Started!</h2>
+            <p>Your course has officially started. Enjoy learning!</p>
+        </div>
+    </section>
+</body>
+</html>

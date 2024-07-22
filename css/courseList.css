@@ -1,0 +1,11 @@
+#courseList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-spacing);
+}
+
+.course-item {
+    border: 1px solid #ccc;
+    padding: var(--base-spacing);
+    border-radius: 5px;
+}

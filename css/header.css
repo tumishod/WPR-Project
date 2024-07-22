@@ -1,0 +1,9 @@
+header {
+    background-color: var(--primary-color);
+    padding: var(--base-spacing);
+    text-align: center;
+}
+
+header h1 {
+    color: white;
+}

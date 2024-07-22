@@ -1,0 +1,21 @@
+/* Import variables and common styles */
+@import url('variables.css');
+
+/* Import base styles */
+@import url('base.css');
+
+/* Import layout styles */
+@import url('layout.css');
+
+/* Import component styles */
+@import url('header.css');
+@import url('footer.css');
+@import url('courseList.css');
+@import url('courseDetails.css');
+@import url('modules.css');
+@import url('courseManagement.css');
+
+/* Import page-specific styles */
+@import url('index.css');
+@import url('enroll.css');
+

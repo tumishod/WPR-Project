@@ -1,0 +1,11 @@
+#courseManagement {
+    margin-top: var(--base-spacing);
+}
+
+#courseManagement button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--base-spacing);
+    border: none;
+    cursor: pointer;
+}

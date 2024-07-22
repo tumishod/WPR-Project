@@ -1,0 +1,5 @@
+#courseDetails {
+    border: 1px solid #ccc;
+    padding: var(--base-spacing);
+    border-radius: 5px;
+}

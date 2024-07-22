@@ -1,0 +1,14 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-family);
+    color: #333;
+    line-height: 1.6;
+    padding: var(--base-spacing);
+}
