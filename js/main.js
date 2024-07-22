@@ -100,17 +100,17 @@ function updateCourseList(query) {
             <p>${course.duration}</p>
             <p>${course.description}</p>
         `;
+        courseItem.addEventListener('click', function() {
+            currentCourseId = course.id;
+            displayCourseDetails(course.id);
+            hideAllSections();
+            document.getElementById('details').style.display = 'block';
+        });
         courseList.appendChild(courseItem);
     });
 }
 
-document.getElementById('courseList').addEventListener('click', function(event) {
-    if (event.target && event.target.matches('.course-title')) {
-        const courseId = event.target.dataset.id;
-        currentCourseId = courseId;
-        displayCourseDetails(courseId);
-    }
-});
+// Remove the previous redundant event listener for 'courseList' click
 
 function displayCourseDetails(courseId) {
     const details = courseDetailsData[courseId];
