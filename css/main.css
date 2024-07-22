@@ -1,21 +1,89 @@
-/* Import variables and common styles */
-@import url('variables.css');
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
 
-/* Import base styles */
-@import url('base.css');
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+}
 
-/* Import layout styles */
-@import url('layout.css');
+nav ul li {
+    display: inline;
+}
 
-/* Import component styles */
-@import url('header.css');
-@import url('footer.css');
-@import url('courseList.css');
-@import url('courseDetails.css');
-@import url('modules.css');
-@import url('courseManagement.css');
+nav ul li a {
+    text-decoration: none;
+    color: green;
+}
 
-/* Import page-specific styles */
-@import url('index.css');
-@import url('enroll.css');
+h1, h2, h3, h4 {
+    margin-bottom: 0.5rem;
+}
 
+section {
+    margin-bottom: 20px;
+}
+
+#search {
+    margin-bottom: 20px;
+}
+
+#searchBar {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+#courseList .course-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+#courseDetails, #moduleList {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: red;
+}
+
+button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
