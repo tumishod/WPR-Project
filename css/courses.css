@@ -1,3 +1,7 @@
+header{
+    background-color: transparent;
+}
+
 nav{
     display: flex;
     align-items: center;
@@ -9,13 +13,10 @@ nav ul {
     display: flex;
     margin: 0;
     padding: 0;
-    color: lightgreen;
 }
 
 nav li {
     margin-left: 20px;
-    color: lightgreen;
-
 }
 
 nav a {
@@ -23,13 +24,6 @@ nav a {
     text-decoration: none;
     padding: 8px 16px;
     display: block;
-    color: lightgreen;
-
-}
-
-a:hover {
-    background-color: #575757;
-    border-radius: 4px;
 }
 
 body {
