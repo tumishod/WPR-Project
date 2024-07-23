@@ -9,7 +9,7 @@ nav ul {
     display: flex;
     margin: 0;
     padding: 0;
-    color: lightgreen;
+    color: rgb(238, 144, 186);
 }
 
 nav li {
@@ -18,17 +18,20 @@ nav li {
 
 }
 
-nav a {
-    color: white;
+nav ul li a {
     text-decoration: none;
-    padding: 8px 16px;
-    display: block;
-    color: lightgreen;
+    color: rgb(219, 157, 0);
+    padding: 10px;
+    border-radius: 5px;
+}
 
+nav ul li a:hover {
+    background-color: rgb(144, 167, 238);
+    color: rgb(234, 26, 26);
 }
 
 a:hover {
-    background-color: #575757;
+    background-color: #eb1111;
     border-radius: 4px;
 }
 

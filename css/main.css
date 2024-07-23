@@ -8,7 +8,8 @@
 
 /* Import layout styles */
 @import url('layout.css');
-
+/* Import Nav Bar styles */
+@import url('nav.css');
 /* Import component styles */
 @import url('header.css');
 @import url('footer.css');
@@ -18,10 +19,9 @@
 @import url('courseManagement.css');
 
 /* Import page-specific styles */
-@import url('index.css');
-@import url('enroll.css');
 
-body {
+
+/*body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     padding: 20px;
