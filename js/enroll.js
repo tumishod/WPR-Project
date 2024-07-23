@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    emailjs.init("K5V_wyKvd9ZxgOuAf"); // Initialize EmailJS with your Public Key
+    console.log('EmailJS is initialized:', emailjs);
     document.getElementById('enrollForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -66,5 +68,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('confirmationMessage').style.display = 'block';
             }
         }, 1000);
+          // Prepare the data to be sent
+          const templateParams = {
+            course_name: courseName,
+            to_name: firstName + " " + lastName,
+            full_name: firstName + " " + lastName,
+            email: email,
+            start_date: startDate.toLocaleDateString()
+        };
+
+        console.log('Template Params:', templateParams);
+
+        // Send the email
+        emailjs.send("service_icoeinf", "template_mj7dkrs", {
+            course_name: courseName,
+            to_name: firstName + " " + lastName,
+            full_name: firstName + " " + lastName,
+            email: email,
+            start_date: startDate.toLocaleDateString(),
+            to_email: email // Add the recipient's email address
+        }).then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+        }, function(error) {
+            console.log('FAILED...', error);
+        });
     });
 });
