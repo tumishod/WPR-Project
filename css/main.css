@@ -20,6 +20,7 @@
 /* Import page-specific styles */
 @import url('index.css');
 @import url('enroll.css');
+@import url('Styles.css');
 
 body {
     font-family: Arial, sans-serif;

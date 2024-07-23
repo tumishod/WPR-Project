@@ -4,53 +4,36 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentCourseId = null;
 
     function hideAllSections() {
-       // document.getElementById('search').style.display = 'none';
-        document.getElementById('courses').style.display = 'none';
+        document.getElementById('courseList').style.display = 'none';
         document.getElementById('details').style.display = 'none';
         document.getElementById('courseManagement').style.display = 'none';
     }
 
-    // document.getElementById('searchCoursesLink').addEventListener('click', function(event) {
-      //  event.preventDefault();
-       // hideAllSections();
-       // document.getElementById('search').style.display = 'block';
-//    });
+    const viewCoursesLink = document.getElementById('coursesLink');
+    const searchButton = document.getElementById('searchButton');
 
-    document.getElementById('viewCoursesLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        hideAllSections();
-        document.getElementById('courses').style.display = 'block';
-        updateCourseList(''); // Initialize with all courses
-    });
-
-    document.getElementById('viewCourseDetailsLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        hideAllSections();
-        document.getElementById('details').style.display = 'block';
-    });
-
-    document.getElementById('viewModulesLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        if (currentCourseId) {
+    if (viewCoursesLink) {
+        viewCoursesLink.addEventListener('click', function(event) {
+            event.preventDefault();
             hideAllSections();
-            document.getElementById('courseManagement').style.display = 'block';
-            updateModuleList(currentCourseId);
-        } else {
-            alert('Please select a course first.');
-        }
-    });
+            document.getElementById('courseList').style.display = 'block';
+            updateCourseList(''); // Initialize with all courses
+        });
+    }
 
-    document.getElementById('searchButton').addEventListener('click', function() {
-        const query = document.getElementById('searchBar').value.toLowerCase();
-        console.log('Search query:', query);
-        updateCourseList(query);
-        document.getElementById('courses').style.display = 'block';
-    });
+    if (searchButton) {
+        searchButton.addEventListener('click', function() {
+            const query = document.getElementById('searchBar').value.toLowerCase();
+            console.log('Search query:', query);
+            updateCourseList(query);
+            document.getElementById('courseList').style.display = 'block';
+        });
+    }
 
     const courses = [
-        { id: 1, title: 'Diploma', code: 'D456', duration: '2 years', description: 'Diploma description' },
-        { id: 2, title: 'BIT', code: 'BIT789', duration: '3 years', description: 'BIT description' },
-        { id: 3, title: 'BCOM', code: 'BCOM101', duration: '4 years', description: 'BCOM description' }
+        { id: 1, title: 'Diploma', code: 'D456', duration: '2 years', description: 'Diploma in Information Technology' },
+        { id: 2, title: 'BIT', code: 'BIT789', duration: '3 years', description: 'Bachelor of Information Technology' },
+        { id: 3, title: 'BCOM', code: 'BCOM101', duration: '4 years', description: 'Bachelor of Commerce' }
     ];
 
     const courseDetailsData = {
