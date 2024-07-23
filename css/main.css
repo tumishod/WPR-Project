@@ -6,12 +6,19 @@ body {
     padding: 20px;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
+    align-items: center;
     gap: 1rem;
+    flex-grow: 1;
 }
 
 nav ul li {
@@ -30,21 +37,37 @@ nav ul li a:hover {
     color: black;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+#searchBar {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+#searchButton {
+    padding: 5px 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: darkgreen;
+}
+
 h1, h2, h3, h4 {
     margin-bottom: 0.5rem;
 }
 
 section {
     margin-bottom: 20px;
-}
-
-#search {
-    margin-bottom: 20px;
-}
-
-#searchBar {
-    padding: 5px;
-    margin-right: 10px;
 }
 
 #courseList .course-item {

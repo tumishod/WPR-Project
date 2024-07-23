@@ -6,18 +6,31 @@
     <title>Belgium Campus</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" href="pics/belgium campus logo.jpeg" type="image/x-icon">
-    <script defer src="js/main.js"></script>
+    <script defer src="js/courses.js"></script>
 </head>
 <body>
+    <header>
+        <a href="">
+            <h1 style="color: black; ">Belgium Campus ITversity</h1>
+        </a>
+    </header>
     <nav>
         <ul>
-            <li><a href="#search" id="searchCoursesLink">Search Courses</a></li>
+           <!-- <li><a href="#search" id="searchCoursesLink">Search Courses</a></li> -->
             <li><a href="#courses" id="viewCoursesLink">Courses</a></li>
             <li><a href="#details" id="viewCourseDetailsLink">Course Details</a></li>
             <li><a href="#courseManagement" id="viewModulesLink">Modules</a></li>
             <li><a href="enroll.html">Enroll</a></li>
+            <li><a href="index.html">Home</a></li>
+            <div class="search-container">
+                <input type="text" id="searchBar" placeholder="Enter Course Name">
+                <button id="searchButton">Search</button>
+            </div>
         </ul>
     </nav>
+
+    
+   
     <section id="courses">
         <h2>Course List</h2>
         <div id="courseList">
@@ -25,8 +38,21 @@
         </div>
     </section>
     
+    <section id="details" style="display: none;">
+        <h2>Course Details</h2>
+        <div id="courseDetails">
+            <!-- Course Details will be inserted here dynamically -->
+            <button id="printButton">Print Course</button>
+        </div>
+    </section>
     
-
-    
+    <section id="courseManagement" style="display: none;">
+        <h2>Modules</h2>
+        <div id="moduleList">
+            <!-- List of modules will be inserted here dynamically -->
+        </div>
+        
+    </section>
+  
 </body>
 </html>
