@@ -57,3 +57,6 @@
     flex-direction: column;
     gap: 10px;
 }
+.vertical-align-top {
+    vertical-align: top;
+}
