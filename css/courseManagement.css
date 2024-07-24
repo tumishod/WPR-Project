@@ -1,36 +1,59 @@
-#courseManagement {
-    margin-top: var(--base-spacing);
-}
-
-#courseManagement button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: var(--base-spacing);
-    border: none;
-    cursor: pointer;
-}
-.progress-bar {
-    margin-top: 10px;
+.progress-bar, #overallProgressTracker {
+    
     background-color: #f3f3f3;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    width: 100%;
+   
+   
 }
 
 .progress-container {
     height: 20px;
-    background-color: #f3f3f3;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
 }
 
 .progress {
     height: 100%;
-    background-color: green;
+    background-color: rgb(128, 28, 0);
     width: 0%; /* This will be dynamically set */
     transition: width 0.4s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px; /* Add border radius if needed */
 }
 
-.progress-bar label {
+.progress-bar label, #overallProgressTracker label {
     font-weight: bold;
     margin-right: 10px;
+}
+
+.management-container {
+    display: flex;
+    gap: 20px; /* Adjust gap as needed */
+}
+
+#moduleList {
+    flex: 1; /* Adjust to balance the space between module list and progress bars */
+}
+
+#progressTrackers {
+    flex: 1; /* Adjust to balance the space between module list and progress bars */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adjust spacing between progress bars */
+}
+
+.progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#overallProgressTracker {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

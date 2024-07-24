@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const viewCoursesLink = document.getElementById('coursesLink');
     const searchButton = document.getElementById('searchButton');
-    const courseManagementLink = document.getElementById('modulesLink'); 
+    const courseManagementLink = document.getElementById('modulesLink');
 
     // Event listener for the "Courses" link to display all courses
     if (viewCoursesLink) {
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${year}</td>
                     <td>
                         <ul>
-                            ${details.years[year].map(module => `<li>${module}</li>`).join('')}
+                            ${details.years[year].map(module => `<li class="module" data-year="${year}">${module}</li>`).join('')}
                         </ul>
                     </td>
                 </tr>
@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const listItem = document.createElement('li');
                 listItem.textContent = module;
                 listItem.className = 'module'; // Add class for completed tracking
+                listItem.dataset.year = year; // Store year information in data attribute
                 listItem.addEventListener('click', function() {
                     markModuleCompleted(listItem); // Toggle completion on click
                 });
@@ -185,17 +186,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to update the completed modules list and progress
     function updateCompletedModulesList() {
         const completedModules = document.querySelectorAll('.module.completed');
-        const moduleList = document.getElementById('completedModulesList'); // Updated ID for completed modules
-        moduleList.innerHTML = '';
+        const completedModulesList = document.getElementById('completedModulesList');
 
-        completedModules.forEach(module => {
-            const listItem = document.createElement('li');
-            listItem.textContent = module.textContent;
-            moduleList.appendChild(listItem);
-        });
+        if (completedModulesList) {
+            completedModulesList.innerHTML = ''; // Clear the list before updating
 
-        // Update progress bars
-        updateProgressTrackers(currentCourseId);
+            completedModules.forEach(module => {
+                const listItem = document.createElement('li');
+                listItem.textContent = module.textContent;
+                completedModulesList.appendChild(listItem);
+            });
+
+            // Update progress bars after updating the list of completed modules
+            updateProgressTrackers(currentCourseId);
+        } else {
+            console.error('Element with ID "completedModulesList" not found.');
+        }
     }
 
     // Function to update the progress bars
@@ -204,6 +210,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const progressTrackers = document.getElementById('progressTrackers');
         progressTrackers.innerHTML = '';
 
+        // First, add the overall progress bar
+        updateOverallProgressTracker(details);
+
         Object.keys(details.years).forEach(year => {
             const yearModules = details.years[year].length;
             const completedModules = document.querySelectorAll(`.module.completed[data-year="${year}"]`).length;
@@ -211,22 +220,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const progressBar = document.createElement('div');
             progressBar.className = 'progress-bar';
 
+            const progressContainer = document.createElement('div');
+            progressContainer.className = 'progress-container';
+
             const progress = document.createElement('div');
             progress.className = 'progress';
             progress.style.width = `${(completedModules / yearModules) * 100}%`;
 
-            progressBar.innerHTML = `
-                <label>${year}</label>
-                <div class="progress-container">
-                    ${progress.outerHTML}
-                </div>
-            `;
+            progressContainer.appendChild(progress);
+            progressBar.innerHTML = `<label>${year}</label>`;
+            progressBar.appendChild(progressContainer);
 
             progressTrackers.appendChild(progressBar);
         });
-
-        // Update overall progress bar
-        updateOverallProgressTracker(details);
     }
 
     // Function to update the overall progress bar

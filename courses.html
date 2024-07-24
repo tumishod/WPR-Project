@@ -43,24 +43,24 @@
             <button id="printButton">Print Course</button>
         </section>
         <section id="courseManagement" style="display: none;">
-            <h2>Modules</h2>
-            <div id="moduleList">
-                <!-- List of modules will be inserted here dynamically -->
-            </div>
-        </section>
-        <section id="courseManagement" style="display: none;">
             <h2>Course Management</h2>
+            <div id="managementContainer" class="management-container">
             <div id="moduleList">
                 <!-- List of modules will be inserted here dynamically -->
             </div>
-            <div id="progressTrackers">
-                <!-- Progress bars for each year will be dynamically inserted here -->
+            <div id="completedModulesList"> <!-- Ensure this ID matches in the JS -->
+                <!-- Completed modules will be listed here -->
             </div>
             <div id="overallProgressTracker">
                 <!-- Overall progress bar will be inserted here dynamically -->
             </div>
+            <div id="progressTrackers">
+                <!-- Progress bars for each year will be dynamically inserted here -->
+            </div>
+            
+        </div>
+            
         </section>
-        
-    </main>
+      </main>
 </body>
 </html>
