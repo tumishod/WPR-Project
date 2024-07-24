@@ -43,8 +43,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: rgb(144, 167, 238);
-    color: black;
+    background-color: black;
+    color: red;
 }
 
 .search-bar {
@@ -181,3 +181,5 @@ button {
 button:hover {
     background-color: rgb(100, 60, 0);
 }
+
+
