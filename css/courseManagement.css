@@ -9,3 +9,28 @@
     border: none;
     cursor: pointer;
 }
+.progress-bar {
+    margin-top: 10px;
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.progress-container {
+    height: 20px;
+    background-color: #f3f3f3;
+}
+
+.progress {
+    height: 100%;
+    background-color: green;
+    width: 0%; /* This will be dynamically set */
+    transition: width 0.4s;
+}
+
+.progress-bar label {
+    font-weight: bold;
+    margin-right: 10px;
+}

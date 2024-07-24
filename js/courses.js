@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentCourseId = null;
 
+    // Function to hide all sections initially
     function hideAllSections() {
         document.getElementById('courseList').style.display = 'none';
         document.getElementById('details').style.display = 'none';
@@ -11,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const viewCoursesLink = document.getElementById('coursesLink');
     const searchButton = document.getElementById('searchButton');
+    const courseManagementLink = document.getElementById('modulesLink'); 
 
+    // Event listener for the "Courses" link to display all courses
     if (viewCoursesLink) {
         viewCoursesLink.addEventListener('click', function(event) {
             event.preventDefault();
@@ -21,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Event listener for the "Search" button to filter courses
     if (searchButton) {
         searchButton.addEventListener('click', function() {
             const query = document.getElementById('searchBar').value.toLowerCase();
@@ -30,12 +34,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Event listener for the "Course Management" link
+    if (courseManagementLink) {
+        courseManagementLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (currentCourseId) {
+                hideAllSections();
+                document.getElementById('courseManagement').style.display = 'block';
+                updateModuleList(currentCourseId);
+                updateProgressTrackers(currentCourseId); // Update progress trackers
+            } else {
+                alert('Please select a course first.');
+            }
+        });
+    }
+
+    // Array containing course information, including NQF level
     const courses = [
-        { id: 1, title: 'Diploma', code: 'D456', duration: '2 years', NQFlevel:'NQF level 6', description: 'Diploma in Information Technology' },
-        { id: 2, title: 'BIT', code: 'BIT789', duration: '3 years', NQFlevel:'NQF level 7', description: 'Bachelor of Information Technology' },
-        { id: 3, title: 'BCOM', code: 'BCOM101', duration: '4 years', NQFlevel:'NQF level 8', description: 'Bachelor of Computing' }
+        { id: 1, title: 'Diploma', code: 'D456', duration: '2 years', NQFlevel: 'NQF level 6', description: 'Diploma in Information Technology' },
+        { id: 2, title: 'BIT', code: 'BIT789', duration: '3 years', NQFlevel: 'NQF level 7', description: 'Bachelor of Information Technology' },
+        { id: 3, title: 'BCOM', code: 'BCOM101', duration: '4 years', NQFlevel: 'NQF level 8', description: 'Bachelor of Computing' }
     ];
 
+    // Object containing detailed course data, including years and modules
     const courseDetailsData = {
         1: {
             title: 'Diploma',
@@ -63,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // Function to update the course list based on the search query
     function updateCourseList(query) {
         const filteredCourses = courses.filter(course => 
             course.title.toLowerCase().includes(query) || 
@@ -95,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Function to display the course details, including modules for each year
     function displayCourseDetails(courseId) {
         const details = courseDetailsData[courseId];
         const courseDetails = document.getElementById('courseDetails');
@@ -127,8 +150,8 @@ document.addEventListener('DOMContentLoaded', function() {
             ${tableContent}
         `;
     }
-    updateCourseList('');
 
+    // Function to update the module list and display it
     function updateModuleList(courseId) {
         const moduleList = document.getElementById('moduleList');
         moduleList.innerHTML = '';
@@ -143,26 +166,26 @@ document.addEventListener('DOMContentLoaded', function() {
             details.years[year].forEach(module => {
                 const listItem = document.createElement('li');
                 listItem.textContent = module;
+                listItem.className = 'module'; // Add class for completed tracking
+                listItem.addEventListener('click', function() {
+                    markModuleCompleted(listItem); // Toggle completion on click
+                });
                 moduleUl.appendChild(listItem);
             });
             moduleList.appendChild(moduleUl);
         });
     }
 
-    document.getElementById('courseDetails').addEventListener('click', function(event) {
-        if (event.target && event.target.matches('.module')) {
-            markModuleCompleted(event.target);
-        }
-    });
-
+    // Function to mark a module as completed
     function markModuleCompleted(moduleElement) {
         moduleElement.classList.toggle('completed');
         updateCompletedModulesList();
     }
 
+    // Function to update the completed modules list and progress
     function updateCompletedModulesList() {
         const completedModules = document.querySelectorAll('.module.completed');
-        const moduleList = document.getElementById('moduleList');
+        const moduleList = document.getElementById('completedModulesList'); // Updated ID for completed modules
         moduleList.innerHTML = '';
 
         completedModules.forEach(module => {
@@ -170,9 +193,68 @@ document.addEventListener('DOMContentLoaded', function() {
             listItem.textContent = module.textContent;
             moduleList.appendChild(listItem);
         });
+
+        // Update progress bars
+        updateProgressTrackers(currentCourseId);
     }
 
+    // Function to update the progress bars
+    function updateProgressTrackers(courseId) {
+        const details = courseDetailsData[courseId];
+        const progressTrackers = document.getElementById('progressTrackers');
+        progressTrackers.innerHTML = '';
+
+        Object.keys(details.years).forEach(year => {
+            const yearModules = details.years[year].length;
+            const completedModules = document.querySelectorAll(`.module.completed[data-year="${year}"]`).length;
+
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+
+            const progress = document.createElement('div');
+            progress.className = 'progress';
+            progress.style.width = `${(completedModules / yearModules) * 100}%`;
+
+            progressBar.innerHTML = `
+                <label>${year}</label>
+                <div class="progress-container">
+                    ${progress.outerHTML}
+                </div>
+            `;
+
+            progressTrackers.appendChild(progressBar);
+        });
+
+        // Update overall progress bar
+        updateOverallProgressTracker(details);
+    }
+
+    // Function to update the overall progress bar
+    function updateOverallProgressTracker(details) {
+        const overallProgressTracker = document.getElementById('overallProgressTracker');
+        let totalModules = 0;
+        let totalCompletedModules = 0;
+
+        Object.keys(details.years).forEach(year => {
+            const yearModules = details.years[year].length;
+            totalModules += yearModules;
+            const completedModules = document.querySelectorAll(`.module.completed[data-year="${year}"]`).length;
+            totalCompletedModules += completedModules;
+        });
+
+        overallProgressTracker.innerHTML = `
+            <label>Overall Progress</label>
+            <div class="progress-container">
+                <div class="progress" style="width: ${(totalCompletedModules / totalModules) * 100}%"></div>
+            </div>
+        `;
+    }
+
+    // Event listener for the print button to print the course details
     document.getElementById('printButton').addEventListener('click', function() {
         window.print();
     });
+
+    // Initial call to display the course list when the page loads
+    updateCourseList('');
 });

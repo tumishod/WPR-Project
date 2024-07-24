@@ -17,7 +17,12 @@
         <nav>
             <ul>
                 <li><a href="index.html" id="homeLink">Home</a></li>
-                <li><a href="courses.html" id="coursesLink">Courses</a></li>
+                <li class="dropdown">
+                    <a href="courses.html" id="coursesLink" class="dropbtn">Courses</a>
+                    <div class="dropdown-content">
+                        <a href="#details" id="courseDetailsLink">Course Details</a>
+                        <a href="#courseManagement" id="modulesLink">Course Management</a>
+                    </div>
                 <li><a href="enroll.html" id="enrollLink">Enroll</a></li>
                 <li><a href="#" id="contactLink">Contact Us</a></li>
             </ul>
@@ -43,7 +48,19 @@
                 <!-- List of modules will be inserted here dynamically -->
             </div>
         </section>
-       
+        <section id="courseManagement" style="display: none;">
+            <h2>Course Management</h2>
+            <div id="moduleList">
+                <!-- List of modules will be inserted here dynamically -->
+            </div>
+            <div id="progressTrackers">
+                <!-- Progress bars for each year will be dynamically inserted here -->
+            </div>
+            <div id="overallProgressTracker">
+                <!-- Overall progress bar will be inserted here dynamically -->
+            </div>
+        </section>
+        
     </main>
 </body>
 </html>
