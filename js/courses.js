@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const courses = [
-        { id: 1, title: 'Diploma', code: 'D456', duration: '2 years', description: 'Diploma in Information Technology' },
-        { id: 2, title: 'BIT', code: 'BIT789', duration: '3 years', description: 'Bachelor of Information Technology' },
-        { id: 3, title: 'BCOM', code: 'BCOM101', duration: '4 years', description: 'Bachelor of Commerce' }
+        { id: 1, title: 'Diploma', code: 'D456', duration: '2 years', NQFlevel:'NQF level 6', description: 'Diploma in Information Technology' },
+        { id: 2, title: 'BIT', code: 'BIT789', duration: '3 years', NQFlevel:'NQF level 7', description: 'Bachelor of Information Technology' },
+        { id: 3, title: 'BCOM', code: 'BCOM101', duration: '4 years', NQFlevel:'NQF level 8', description: 'Bachelor of Computing' }
     ];
 
     const courseDetailsData = {
@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>${course.code}</p>
                 <p>${course.duration}</p>
                 <p>${course.description}</p>
+                <p>${course.NQFlevel}</p>
             `;
             courseItem.addEventListener('click', function() {
                 currentCourseId = course.id;
@@ -126,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ${tableContent}
         `;
     }
+    updateCourseList('');
 
     function updateModuleList(courseId) {
         const moduleList = document.getElementById('moduleList');
