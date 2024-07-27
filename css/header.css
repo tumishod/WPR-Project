@@ -1,7 +1,11 @@
 header {
-    background-color: var(--primary-color);
-    padding: var(--base-spacing);
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    padding: 10px 20px;
+    position: relative;
 }
 
 header h1 {

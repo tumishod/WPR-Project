@@ -1,8 +1,6 @@
 /* Import variables and common styles */
 @import url('variables.css');
-
-/* Import variables and common styles */
-@import url('courses.css');
+/*@import url('courses.css');
 /* Import base styles */
 @import url('base.css');
 

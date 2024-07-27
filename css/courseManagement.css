@@ -1,8 +1,5 @@
 .progress-bar, #overallProgressTracker {
-    
-    background-color: #f3f3f3;
-   
-   
+    background-color: #f3f3f3; 
 }
 
 .progress-container {
@@ -10,7 +7,7 @@
     border-radius: 5px;
     overflow: hidden;
     position: relative;
-    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+ 
 }
 
 .progress {
@@ -35,6 +32,11 @@
 }
 
 #moduleList {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
     flex: 1; /* Adjust to balance the space between module list and progress bars */
 }
 
@@ -43,6 +45,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px; /* Adjust spacing between progress bars */
+    list-style: none;
 }
 
 .progress-section {
@@ -59,4 +62,17 @@
 }
 .vertical-align-top {
     vertical-align: top;
+}
+td ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+td ul li {
+    padding: 3px 0;
+}
+.completed {
+    text-decoration: line-through;
+    color: red;
 }
