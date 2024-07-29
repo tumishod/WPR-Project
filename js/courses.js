@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const viewCoursesLink = document.getElementById('coursesLink');
     const searchButton = document.getElementById('searchButton');
     const courseManagementLink = document.getElementById('modulesLink');
+    const backButtonDetails = document.getElementById('backButtonDetails');
+    const backButtonManagement = document.getElementById('backButtonManagement')
 
     // Event listener for the "Courses" link to display all courses
     if (viewCoursesLink) {
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
      // Event listener for the "Course Details" link
-     if (courseDetailsLink) {
+    /* if (courseDetailsLink) {
         courseDetailsLink.addEventListener('click', function(event) {
             event.preventDefault();
             hideAllSections();
@@ -72,6 +74,23 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 alert('Please select a course first.');
             }
+        });
+    }*/
+     // Event listener for the "Back" button in the details section
+     if (backButtonDetails) {
+        backButtonDetails.addEventListener('click', function(event) {
+            event.preventDefault();
+            hideAllSections();
+            document.getElementById('courseList').style.display = 'block';
+        });
+    }
+
+    // Event listener for the "Back" button in the management section
+    if (backButtonManagement) {
+        backButtonManagement.addEventListener('click', function(event) {
+            event.preventDefault();
+            hideAllSections();
+            document.getElementById('courseList').style.display = 'block';
         });
     }
 
