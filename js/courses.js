@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('searchButton');
     const courseManagementLink = document.getElementById('modulesLink');
     const backButtonDetails = document.getElementById('backButtonDetails');
-    const backButtonManagement = document.getElementById('backButtonManagement')
+    const backButtonManagement = document.getElementById('backButtonManagement');
 
     // Event listener for the "Courses" link to display all courses
     if (viewCoursesLink) {
@@ -63,21 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-     // Event listener for the "Course Details" link
-    /* if (courseDetailsLink) {
-        courseDetailsLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            hideAllSections();
-            document.getElementById('details').style.display = 'block';
-            if (currentCourseId) {
-                displayCourseDetails(currentCourseId);
-            } else {
-                alert('Please select a course first.');
-            }
-        });
-    }*/
-     // Event listener for the "Back" button in the details section
-     if (backButtonDetails) {
+
+    // Event listener for the "Back" button in the details section
+    if (backButtonDetails) {
         backButtonDetails.addEventListener('click', function(event) {
             event.preventDefault();
             hideAllSections();
@@ -139,33 +127,49 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateCourseList(query) {
         const filteredCourses = courses.filter(course => 
             course.title.toLowerCase().includes(query) || 
-            course.code.toLowerCase().includes(query)
+            course.code.toLowerCase().includes(query) || 
+            courseDetailsData[course.id].years.some(year => 
+                year.some(module => module.toLowerCase().includes(query))
+            )
         );
-        const courseList = document.getElementById('courseList');
+        const courseList = document.querySelector('#courseList');
         courseList.innerHTML = '';
 
         if (filteredCourses.length === 0) {
             courseList.innerHTML = '<p>No courses found.</p>';
         }
 
+        // Create a Bootstrap row to contain the course cards
+        const row = document.createElement('div');
+        row.className = 'row';
+
         filteredCourses.forEach(course => {
-            const courseItem = document.createElement('div');
-            courseItem.className = 'course-item';
-            courseItem.innerHTML = `
-                <h3 class="course-title" data-id="${course.id}">${course.title}</h3>
-                <p>${course.code}</p>
-                <p>${course.duration}</p>
-                <p>${course.description}</p>
-                <p>${course.NQFlevel}</p>
+            const col = document.createElement('div');
+            col.className = 'col-md-4 mb-4';
+            col.innerHTML = `
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">${course.title}</h5>
+                        <p class="card-text">${course.code}</p>
+                        <p class="card-text">${course.duration}</p>
+                        <p class="card-text">${course.description}</p>
+                        <p class="card-text">${course.NQFlevel}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary view-details" data-id="${course.id}">View Details</button>
+                    </div>
+                </div>
             `;
-            courseItem.addEventListener('click', function() {
+            col.querySelector('.view-details').addEventListener('click', function() {
                 currentCourseId = course.id;
                 displayCourseDetails(course.id);
                 hideAllSections();
                 document.getElementById('details').style.display = 'block';
             });
-            courseList.appendChild(courseItem);
+            row.appendChild(col);
         });
+
+        courseList.appendChild(row);
     }
 
     // Function to display the course details, including modules for each year
@@ -174,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const courseDetails = document.getElementById('courseDetails');
 
         let tableContent = `
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Year</th>
@@ -235,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const moduleUl = document.createElement('ul');
             details.years[year].forEach(module => {
                 const listItem = document.createElement('li');
-                listItem.textContent = module; // Corrected this line to use module name
+                listItem.textContent = module;
                 listItem.className = 'module'; // Add class for completed tracking
                 listItem.dataset.year = year; // Store year information in data attribute
                 listItem.addEventListener('click', function() {
@@ -287,21 +291,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const yearModules = details.years[year].length;
             const completedModules = document.querySelectorAll(`.module.completed[data-year="${year}"]`).length;
 
-            const progressBar = document.createElement('div');
-            progressBar.className = 'progress-bar';
-            
-            const progressContainer = document.createElement('div');
-            progressContainer.className = 'progress-container';
+            const progress = (completedModules / yearModules) * 100;
 
-            const progress = document.createElement('div');
-            progress.className = 'progress';
-            progress.style.width = `${(completedModules / yearModules) * 100}%`;
-
-            progressContainer.appendChild(progress);
-            progressBar.innerHTML = `<label>${year}</label>`;
-            progressBar.appendChild(progressContainer);
-
-            progressTrackers.appendChild(progressBar);
+            progressTrackers.innerHTML += `
+                <div class="row mb-3">
+                    <div class="col-sm-3"><h4>${year}</h4></div>
+                    <div class="col-sm-9">
+                        <div class="progress">
+                            <div class="progress-bar ${getProgressBarColor(progress)}" role="progressbar" style="width: ${progress}%;" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100">${progress.toFixed(1)}%</div>
+                        </div>
+                    </div>
+                </div>
+            `;
         });
     }
 
@@ -318,12 +319,29 @@ document.addEventListener('DOMContentLoaded', function() {
             totalCompletedModules += completedModules;
         });
 
+        const overallProgress = (totalCompletedModules / totalModules) * 100;
+
         overallProgressTracker.innerHTML = `
-            <label>Overall Progress</label>
-            <div class="progress-container">
-                <div class="progress" style="width: ${(totalCompletedModules / totalModules) * 100}%"></div>
+            <div class="row mb-3">
+                <div class="col-sm-3"><h3>Overall Progress</h3></div>
+                <div class="col-sm-9">
+                    <div class="progress">
+                        <div class="progress-bar ${getProgressBarColor(overallProgress)}" role="progressbar" style="width: ${overallProgress}%;" aria-valuenow="${overallProgress}" aria-valuemin="0" aria-valuemax="100">${overallProgress.toFixed(1)}%</div>
+                    </div>
+                </div>
             </div>
         `;
+    }
+
+    // Utility function to determine progress bar color based on progress percentage
+    function getProgressBarColor(progress) {
+        if (progress >= 75) {
+            return 'bg-success'; // Green
+        } else if (progress >= 50) {
+            return 'bg-warning'; // Yellow
+        } else {
+            return 'bg-danger'; // Red
+        }
     }
 
     // Event listener for the print button to print the course details

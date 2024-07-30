@@ -1,4 +1,4 @@
-.progress-bar, #overallProgressTracker {
+/*.progress-bar, #overallProgressTracker {
     background-color: #f3f3f3; 
 }
 
@@ -13,12 +13,12 @@
 .progress {
     height: 100%;
     background-color: rgb(128, 28, 0);
-    width: 0%; /* This will be dynamically set */
+    width: 0%; 
     transition: width 0.4s;
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 5px; /* Add border radius if needed */
+    border-radius: 5px; 
 }
 
 .progress-bar label, #overallProgressTracker label {
@@ -28,7 +28,7 @@
 
 .management-container {
     display: flex;
-    gap: 20px; /* Adjust gap as needed */
+    gap: 20px; 
 }
 
 #moduleList {
@@ -37,14 +37,14 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9;
-    flex: 1; /* Adjust to balance the space between module list and progress bars */
+    flex: 1; 
 }
 
 #progressTrackers {
-    flex: 1; /* Adjust to balance the space between module list and progress bars */
+    flex: 1; 
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Adjust spacing between progress bars */
+    gap: 10px; 
     list-style: none;
 }
 
@@ -71,7 +71,7 @@ td ul {
 
 td ul li {
     padding: 3px 0;
-}
+}*/
 .completed {
     text-decoration: line-through;
     color: red;
