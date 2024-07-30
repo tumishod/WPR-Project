@@ -258,27 +258,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Function to update the completed modules list and progress
-    function updateCompletedModulesList() {
-        const completedModules = document.querySelectorAll('.module.completed');
-        const completedModulesList = document.getElementById('completedModulesList');
+function updateCompletedModulesList() {
+    const completedModules = document.querySelectorAll('.module.completed');
+    const completedModulesList = document.getElementById('completedModulesList');
 
-        if (completedModulesList) {
-            completedModulesList.innerHTML = ''; // Clear the list before updating
+    if (completedModulesList) {
+        completedModulesList.innerHTML = '<h4>Completed Modules</h4>'; // Add header for completed modules
 
-            completedModules.forEach(module => {
-                const listItem = document.createElement('li');
-                listItem.textContent = module.textContent;
-                completedModulesList.appendChild(listItem);
-            });
+        completedModules.forEach(module => {
+            const listItem = document.createElement('li');
+            listItem.textContent = module.textContent;
+            completedModulesList.appendChild(listItem);
+        });
 
-            // Update progress bars after updating the list of completed modules
-            updateProgressTrackers(currentCourseId);
-        } else {
-            console.error('Element with ID "completedModulesList" not found.');
-        }
+        // Update progress bars after updating the list of completed modules
+        updateProgressTrackers(currentCourseId);
+    } else {
+        console.error('Element with ID "completedModulesList" not found.');
     }
+}
 
-    // Function to update the progress bars
+ // Function to update the progress bars
     function updateProgressTrackers(courseId) {
         const details = courseDetailsData[courseId];
         const progressTrackers = document.getElementById('progressTrackers');
