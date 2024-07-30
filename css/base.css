@@ -16,3 +16,6 @@ body {
     position: absolute;
     left: 20px;
 }
+#logoContainer {
+    background-color: #000;
+}
