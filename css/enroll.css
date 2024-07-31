@@ -12,8 +12,3 @@
     border-radius: 5px;
 }
 
-#enrollmentForm button {
-    background-color: var(--primary-color);
-    color: white;
-    cursor: pointer;
-}
