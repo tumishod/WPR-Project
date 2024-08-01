@@ -21,15 +21,17 @@
                 <a class="navbar-brand" href="index.html">
                     <img src="pics/logo2.png" alt="Home" style="height: 40px;">
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav" >
                       <a class="nav-link active" href="index.html">Home</a>
                       <a class="nav-link active" href="enroll.html">Enroll</a>
                       <a class="nav-link active" href="#courseManagement" id="modulesLink">Course Management</a>
-                      <a class="nav-link active" href="#" id="contactLink">Contact Us</a>
+                      <a class="nav-link active" href="contact.html">Contact Us</a>
                     </div>
 
                     <form class="search-bar d-flex" role="search">
@@ -38,16 +40,17 @@
                     </form>
                 </div>
             </nav>
+
         <main class="container mt-5">
             <div id="courseList" class="course-list row"></div>
+
             <section id="details" class="mt-4" style="display: none;">
                 <h2>Course Details</h2>
-                <div id="courseDetails">
-                    <!-- Course Details will be inserted here dynamically -->
-                </div>
+                <div id="courseDetails"></div>
                 <button id="printButton" class="btn btn-secondary mt-3">Print Course</button>
                 <button id="backButtonDetails" class="btn btn-primary mt-3">Back to Course List</button>
             </section>
+
             <section id="courseManagement" style="display: none;">
                 <button id="backButtonManagement" class="btn btn-primary mt-3 mb-3">Back to Course List</button> 
                 <h2>Course Management</h2>
@@ -70,7 +73,6 @@
                     </div>
                 </div>
             </section>
-            
         </main>
     </div>
 

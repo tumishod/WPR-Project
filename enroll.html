@@ -20,12 +20,33 @@
 </head>
 <body>
     
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#enrollmentForm">Enroll</a></li>
-        </ul>
-    </nav>
+    <header>
+        <h1 class="text-center mb-0">Belgium Campus Online ITversity</h1>
+    </header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <a class="navbar-brand" href="index.html">
+                <img src="pics/logo2.png" alt="Home" style="height: 40px;">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav" >
+                  <a class="nav-link active" href="index.html">Home</a>
+                  <a class="nav-link active" href="enroll.html">Enroll</a>
+                  <a class="nav-link active" href="courses.html">Courses</a>
+                  <a class="nav-link active" href="#" id="contactLink">Contact Us</a>
+                </div>
+
+                <form class="search-bar d-flex" role="search">
+                    <input class="form-control me-2" id="searchBar" type="search" placeholder="Enter course name" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
     <section id="enrollmentForm">
         <h1>Enroll in a Course</h1>
         <form id="enrollForm">
