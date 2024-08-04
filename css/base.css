@@ -70,7 +70,7 @@ body {
 }
 
 /* Text animation */
-h1, .navbar-brand img {
+.navbar-brand {
     animation: fadeInSlideUp 2s ease-out;
 }
 
