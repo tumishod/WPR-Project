@@ -1,14 +1,17 @@
-/* Styles specific to enroll.html */
+#h1-enroll{
+    margin-bottom:0.5em;
+    margin-top: 1em;
+}
 #enrollmentForm {
-    display: flex;
-    flex-direction: column;
-    gap: var(--base-spacing);
+    padding-left: 10%;
+    
 }
 
-#enrollmentForm input,
-#enrollmentForm button {
+#enrollmentForm input {
     padding: var(--base-spacing);
-    border: 1px solid #ccc;
+    border: 1px solid #e2993a;
+    background-color: #e4b578;
     border-radius: 5px;
 }
+
 

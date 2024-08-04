@@ -91,33 +91,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Object containing detailed course data, including years, modules, lecturers, and venue
     const courseDetailsData = {
         1: {
-            title: 'Diploma',
+            title: 'Diploma in Information Technology (DIT)',
             years: {
                 'First Year': ['BUC161', 'BME161', 'COA161', 'DBC161', 'DBF161'],
                 'Second Year': ['DBD261', 'ERP261', 'INL261', 'ILE261', 'PMM261']
             },
-            lecturers: ['Lecturer1', 'Lecturer2', 'Lecturer3', 'Lecturer4', 'Lecturer5', 'Lecturer6', 'Lecturer7', 'Lecturer8', 'Lecturer9', 'Lecturer10', 'Lecturer11', 'Lecturer12', 'Lecturer13', 'Lecturer14', 'Lecturer15'],
+            lecturers: ['Roger Gentry', 'Maximillian Barlow', 'Steve O Sullivan', 'Milly Merrill', 'Clyde Watson'],
             venue: ['Kempton Park', 'Pretoria', 'Online']
         },
         2: {
-            title: 'BIT',
+            title: 'Bachelor in Information Technology (BIT)',
             years: {
                 'First Year': ['ACW171', 'COA171', 'DBD171', 'ENG171', 'INF171'],
                 'Second Year': ['CNA271', 'DBD221', 'ERP271', 'ETH271', 'INF271'],
                 'Third Year': ['BIN371', 'CNA371', 'DAL371', 'DBD371', 'INL371']
             },
-            lecturers: ['Lecturer1', 'Lecturer2', 'Lecturer3', 'Lecturer4', 'Lecturer5', 'Lecturer6', 'Lecturer7', 'Lecturer8', 'Lecturer9', 'Lecturer10', 'Lecturer11', 'Lecturer12', 'Lecturer13', 'Lecturer14', 'Lecturer15'],
+            lecturers: ['Elle Montes', 'Ted Ponce', 'Faisal Howe', 'Lexi Lowery', 'Agnes Chandler'],
             venue: ['Kempton Park', 'Pretoria', 'Online']
         },
         3: {
-            title: 'BCOM',
+            title: 'Bachelor of Computing (BCOM)',
             years: {
                 'First Year': ['ACW181', 'COA181', 'DBD181', 'INF181', 'INL101'],
                 'Second Year': ['DBD281', 'INF281', 'INL201', 'INL202', 'LPR281'],
                 'Third Year': ['RSH381', 'DBD381', 'INL321', 'LPR381', 'MLG381'],
                 'Fourth Year': ['AIT481', 'AIT482', 'DST481']
             },
-            lecturers: ['Lecturer1', 'Lecturer2', 'Lecturer3', 'Lecturer4', 'Lecturer5', 'Lecturer6', 'Lecturer7', 'Lecturer8', 'Lecturer9', 'Lecturer10', 'Lecturer11', 'Lecturer12', 'Lecturer13', 'Lecturer14', 'Lecturer15'],
+            lecturers: ['Elle Montes', 'Ted Ponce', 'Faisal Howe', 'Lexi Lowery', 'Agnes Chandler'],
             venue: ['Kempton Park', 'Pretoria', 'Online']
         }
     };
@@ -146,16 +146,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const col = document.createElement('div');
             col.className = 'col-md-4 mb-4';
             col.innerHTML = `
-                <div class="card h-100">
+                
+                <div class="card border-warning mb-3 h-100">
+                    <h5 class="card-header bg-warning">
+                        ${course.title}
+                    </h5>
                     <div class="card-body">
-                        <h5 class="card-title">${course.title}</h5>
-                        <p class="card-text">${course.code}</p>
-                        <p class="card-text">${course.duration}</p>
-                        <p class="card-text">${course.description}</p>
-                        <p class="card-text">${course.NQFlevel}</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary view-details" data-id="${course.id}">View Details</button>
+                        <p class="card-text">Course code: ${course.code}</p>
+                        <p class="card-text">Course Duration: ${course.duration}</p>
+                        <p class="card-text">Description: ${course.description}</p>
+                        <p class="card-text">NQF Level: ${course.NQFlevel}</p>
+                        <button class="btn btn-warning view-details" data-id="${course.id}">View Details</button>
                     </div>
                 </div>
             `;
