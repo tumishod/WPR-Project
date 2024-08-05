@@ -8,9 +8,9 @@
 /* Base Styles */
 body {
     font-family:  Arial, sans-serif;
-    color: #333;
+    color: #f5ecec;
     line-height: 1.6;
-    padding: var(--base-spacing);
+    
 }
 .logo {
     position: absolute;
