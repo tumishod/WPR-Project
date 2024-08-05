@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h5 class="card-header bg-warning">
                         ${course.title}
                     </h5>
-                    <div class="card-body">
+                    <div class="card-body text-bg-dark p-3">
                         <p class="card-text">Course code: ${course.code}</p>
                         <p class="card-text">Course Duration: ${course.duration}</p>
                         <p class="card-text">Description: ${course.description}</p>
@@ -178,9 +178,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const courseDetails = document.getElementById('courseDetails');
 
         let tableContent = `
-            <table class="table">
+            <table class="table table-warning table-striped">
                 <thead>
-                    <tr>
+                    <tr class="table-warning">
                         <th>Year</th>
                         <th>Modules</th>
                         <th>Lecturers</th>
@@ -195,8 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return `
                     <div>
                         <strong>${mod}</strong><br>
-                        <a href="${studyGuides[details.title]}" class="download-link" target="_blank">Download Study Guide</a><br>
-                        <a href="${videoLinks[details.title]}" class="video-link" target="_blank">Intro Vid to module</a>
+                        <a href="${studyGuides[details.title]}" class="download-link" target="_blank" link-danger>Download Study Guide</a><br>
+                        <a href="${videoLinks[details.title]}" class="video-link" target="_blank" "link-danger">Introduction video to module</a>
                     </div>
                 `;
             }).join('<br>');

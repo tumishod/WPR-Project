@@ -4,3 +4,6 @@
 /* Import Nav Bar styles */
 @import url('nav.css');
 
+a {
+    text-decoration: none;
+  }
