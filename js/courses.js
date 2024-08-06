@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('courses.js is loaded');
-     let currentCourseId = null;
-    
+    let currentCourseId = null;
+
     // Shared resources for all modules
     const studyGuides = {
         'Diploma': 'WPR 271 Study Guide [2024] v1.4.pdf',
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('courseList').style.display = 'none';
         document.getElementById('details').style.display = 'none';
         document.getElementById('courseManagement').style.display = 'none';
+        document.getElementById('searchResults').style.display = 'none'; // Ensure search results are also hidden
     }
 
     const viewCoursesLink = document.getElementById('coursesLink');
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const courseManagementLink = document.getElementById('modulesLink');
     const backButtonDetails = document.getElementById('backButtonDetails');
     const backButtonManagement = document.getElementById('backButtonManagement');
+    const searchForm = document.querySelector('.search-bar');
 
     // Event listener for the "Courses" link to display all courses
     if (viewCoursesLink) {
@@ -38,15 +40,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Event listener for the "Search" button to filter courses
-    if (searchButton) {
-        searchButton.addEventListener('click', function() {
+    // Event listener for the "Search" form to filter courses
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
             const query = document.getElementById('searchBar').value.toLowerCase();
             console.log('Search query:', query);
-            updateCourseList(query);
-            document.getElementById('courseList').style.display = 'block';
+            fetchCourses(query); // Call fetchCourses to handle search
         });
     }
+    // Add keyup event listener for dynamic search
+    if (searchBar) {
+    searchBar.addEventListener('keyup', function(event) {
+        const query = searchBar.value.toLowerCase();
+        console.log('Search query:', query);
+        fetchCourses(query); // Call fetchCourses to handle search
+    });
+}
 
     // Event listener for the "Course Management" link
     if (courseManagementLink) {
@@ -68,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         backButtonDetails.addEventListener('click', function(event) {
             event.preventDefault();
             hideAllSections();
-            document.getElementById('courseList').style.display = 'block';
+            window.location.href = 'courses.html'; // Redirect to courses page without search query
         });
     }
 
@@ -77,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         backButtonManagement.addEventListener('click', function(event) {
             event.preventDefault();
             hideAllSections();
-            document.getElementById('courseList').style.display = 'block';
+            window.location.href = 'courses.html'; // Redirect to courses page without search query
         });
     }
 
@@ -85,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const courses = [
         { id: 1, title: 'Diploma in Information Technology (DIT)', code: 'DIT456', duration: '2 & 1 years', NQFlevel: '6', description: 'Diploma in Information Technology' },
         { id: 2, title: 'Bachelor in Information Technology (BIT)', code: 'BIT789', duration: '3 years', NQFlevel: '7', description: 'Bachelor of Information Technology' },
-        { id: 3, title: 'Bachelor in Information Technology (BCOM)', code: 'BCOM101', duration: '4 years', NQFlevel: '8', description: 'Bachelor of Computing' }
+        { id: 3, title: 'Bachelor in Computing (BCOM)', code: 'BCOM101', duration: '4 years', NQFlevel: '8', description: 'Bachelor of Computing' }
     ];
 
     // Object containing detailed course data, including years, modules, lecturers, and venue
@@ -122,15 +132,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Function to update the course list based on the search query
-    function updateCourseList(query) {
+    // Function to fetch courses based on search query
+    function fetchCourses(query) {
         const filteredCourses = courses.filter(course => 
             course.title.toLowerCase().includes(query) || 
             course.code.toLowerCase().includes(query) || 
-            courseDetailsData[course.id].years.some(year => 
-                year.some(module => module.toLowerCase().includes(query))
-            )
+            Object.values(courseDetailsData[course.id].years).flat().some(module => module.toLowerCase().includes(query))
         );
+
+        displaySearchResults(filteredCourses);
+    }
+
+    // Function to update the course list based on the search query
+    function updateCourseList(query) {
+        const filteredCourses = courses.filter(course =>
+            course.title.toLowerCase().includes(query) ||
+            course.code.toLowerCase().includes(query) ||
+            Object.values(courseDetailsData[course.id].years).flat().some(module => module.toLowerCase().includes(query))
+        );
+
         const courseList = document.querySelector('#courseList');
         courseList.innerHTML = '';
 
@@ -146,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const col = document.createElement('div');
             col.className = 'col-md-4 mb-4';
             col.innerHTML = `
-                
                 <div class="card border-warning mb-3 h-100">
                     <h5 class="card-header bg-warning">
                         ${course.title}
@@ -170,6 +189,54 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         courseList.appendChild(row);
+    }
+
+    // Function to display search results
+    function displaySearchResults(courses) {
+        const searchResultsContainer = document.getElementById('searchResultsContainer');
+        const courseList = document.getElementById('courseList');
+        const searchResults = document.getElementById('searchResults');
+
+        if (courseList && searchResults && searchResultsContainer) {
+            courseList.style.display = 'none'; // Hide the course list
+            searchResults.style.display = 'block'; // Show search results section
+            searchResultsContainer.innerHTML = '';
+
+            if (courses.length > 0) {
+                const row = document.createElement('div');
+                row.className = 'row';
+
+                courses.forEach(course => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-4 mb-4';
+                    col.innerHTML = `
+                        <div class="card border-warning mb-3 h-100">
+                            <h5 class="card-header bg-warning">
+                                ${course.title}
+                            </h5>
+                            <div class="card-body text-bg-dark p-3">
+                                <p class="card-text">Course code: ${course.code}</p>
+                                <p class="card-text">Course Duration: ${course.duration}</p>
+                                <p class="card-text">Description: ${course.description}</p>
+                                <p class="card-text">NQF Level: ${course.NQFlevel}</p>
+                                <button class="btn btn-warning view-details" data-id="${course.id}">View Details</button>
+                            </div>
+                        </div>
+                    `;
+                    col.querySelector('.view-details').addEventListener('click', function() {
+                        currentCourseId = course.id;
+                        displayCourseDetails(course.id);
+                        hideAllSections();
+                        document.getElementById('details').style.display = 'block';
+                    });
+                    row.appendChild(col);
+                });
+
+                searchResultsContainer.appendChild(row);
+            } else {
+                searchResultsContainer.innerHTML = '<p>No courses found.</p>';
+            }
+        }
     }
 
     // Function to display the course details, including modules for each year
@@ -258,27 +325,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Function to update the completed modules list and progress
-function updateCompletedModulesList() {
-    const completedModules = document.querySelectorAll('.module.completed');
-    const completedModulesList = document.getElementById('completedModulesList');
+    function updateCompletedModulesList() {
+        const completedModules = document.querySelectorAll('.module.completed');
+        const completedModulesList = document.getElementById('completedModulesList');
 
-    if (completedModulesList) {
-        completedModulesList.innerHTML = '<h4>Completed Modules</h4>'; // Add header for completed modules
+        if (completedModulesList) {
+            completedModulesList.innerHTML = '<h4>Completed Modules</h4>'; // Add header for completed modules
 
-        completedModules.forEach(module => {
-            const listItem = document.createElement('li');
-            listItem.textContent = module.textContent;
-            completedModulesList.appendChild(listItem);
-        });
+            completedModules.forEach(module => {
+                const listItem = document.createElement('li');
+                listItem.textContent = module.textContent;
+                completedModulesList.appendChild(listItem);
+            });
 
-        // Update progress bars after updating the list of completed modules
-        updateProgressTrackers(currentCourseId);
-    } else {
-        console.error('Element with ID "completedModulesList" not found.');
+            // Update progress bars after updating the list of completed modules
+            updateProgressTrackers(currentCourseId);
+        } else {
+            console.error('Element with ID "completedModulesList" not found.');
+        }
     }
-}
 
- // Function to update the progress bars
+    // Function to update the progress bars
     function updateProgressTrackers(courseId) {
         const details = courseDetailsData[courseId];
         const progressTrackers = document.getElementById('progressTrackers');
@@ -349,6 +416,13 @@ function updateCompletedModulesList() {
         window.print();
     });
 
-    // Initial call to display the course list when the page loads
-    updateCourseList('');
+    // Check for search query in URL and perform search if present
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search');
+    if (searchQuery) {
+        fetchCourses(searchQuery);
+    } else {
+        // Initial call to display the course list when the page loads if no search query
+        updateCourseList('');
+    }
 });
