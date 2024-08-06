@@ -1,10 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     const logoContainer = document.getElementById('logoContainer');
     const mainContent = document.getElementById('mainContent');
+    const introAudio = document.getElementById('introAudio'); // Get the audio element
+
+     // Function to start the intro audio
+    function playIntroAudio() {
+        introAudio.play().catch(error => {
+        });
+    }
 
     if (logoContainer && mainContent) {
         // Fade out the logo after a few seconds
         setTimeout(() => {
+            playIntroAudio();
             logoContainer.classList.add('fade-out');
             logoContainer.addEventListener('transitionend', () => {
                 logoContainer.classList.add('d-none'); // Hide logo container
