@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const backButtonDetails = document.getElementById('backButtonDetails');
     const backButtonManagement = document.getElementById('backButtonManagement');
     const searchForm = document.querySelector('.search-bar');
+    const searchBar = document.getElementById('searchBar');
 
     // Event listener for the "Courses" link to display all courses
     if (viewCoursesLink) {
@@ -44,19 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
     if (searchForm) {
         searchForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            const query = document.getElementById('searchBar').value.toLowerCase();
+            const query = searchBar.value.toLowerCase();
             console.log('Search query:', query);
             fetchCourses(query); // Call fetchCourses to handle search
         });
     }
+
     // Add keyup event listener for dynamic search
     if (searchBar) {
-    searchBar.addEventListener('keyup', function(event) {
-        const query = searchBar.value.toLowerCase();
-        console.log('Search query:', query);
-        fetchCourses(query); // Call fetchCourses to handle search
-    });
-}
+        searchBar.addEventListener('keyup', function(event) {
+            const query = searchBar.value.toLowerCase();
+            console.log('Search query:', query);
+            fetchCourses(query); // Call fetchCourses to handle search
+        });
+    }
 
     // Event listener for the "Course Management" link
     if (courseManagementLink) {
@@ -209,6 +211,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 courses.forEach(course => {
                     const col = document.createElement('div');
                     col.className = 'col-md-4 mb-4';
+                    
+                    let moduleContent = '';
+                    const courseDetails = courseDetailsData[course.id];
+
+                    Object.keys(courseDetails.years).forEach(year => {
+                        const modules = courseDetails.years[year].map(module => `<li>${module}</li>`).join('');
+                        moduleContent += `
+                            <h6>${year}</h6>
+                            <ul>${modules}</ul>
+                        `;
+                    });
+
                     col.innerHTML = `
                         <div class="card border-warning mb-3 h-100">
                             <h5 class="card-header bg-warning">
@@ -219,6 +233,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <p class="card-text">Course Duration: ${course.duration}</p>
                                 <p class="card-text">Description: ${course.description}</p>
                                 <p class="card-text">NQF Level: ${course.NQFlevel}</p>
+                                <div class="modules-container">
+                                    ${moduleContent}
+                                </div>
                                 <button class="btn btn-warning view-details" data-id="${course.id}">View Details</button>
                             </div>
                         </div>
