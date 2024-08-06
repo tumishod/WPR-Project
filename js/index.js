@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const logoContainer = document.getElementById('logoContainer');
     const mainContent = document.getElementById('mainContent');
     const introAudio = document.getElementById('introAudio'); // Get the audio element
+     // Hide main content initially
+     mainContent.style.display = 'none';
 
      // Function to start the intro audio
     function playIntroAudio() {
@@ -14,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             playIntroAudio();
             logoContainer.classList.add('fade-out');
+            mainContent.style.display = 'block';
             logoContainer.addEventListener('transitionend', () => {
                 logoContainer.classList.add('d-none'); // Hide logo container
                 mainContent.classList.remove('d-none'); // Show main content

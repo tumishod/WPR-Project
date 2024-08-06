@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="js/index.js"></script>
 </head>
-<body>
+<body class="text-bg-dark p-3">
     <div id="logoContainer" class="d-flex align-items-center justify-content-center vh-100 position-relative">
         <img src="pics/download (1).png" id="logoImage" class="img-fluid" alt="Logo">
         <div id="loadingIndicator" class="position-absolute bottom-0 start-50 translate-middle-x">
@@ -20,11 +20,9 @@
         </div>
     </div>
     <audio id="introAudio" src="Wii Theme - QuickSounds.com.mp3"></audio>
-    <div id="mainContent">
-        <header>
-           
-        </header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div id="mainContent" class="fade-in">
+        <header></header>
+        <nav class="navbar navbar-expand-lg text-bg-secondary p-3 border-bottom border-danger">
             <a class="navbar-brand" href="index.html">
                 <img src="pics/logo2.png" alt="Home" style="height: 40px;">
             </a>
@@ -38,14 +36,65 @@
                   <a class="nav-link" href="courses.html">Courses</a>
                   <a class="nav-link" href="Contact.html">Contact Us</a>
                 </div>
-               <!-- <form class="search-bar d-flex" role="search">
-                    <input class="form-control me-2" id="searchBar" type="search" placeholder="Enter course name" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>-->
             </div>
         </nav>
         <main class="container mt-5">
-            <!-- Main content here -->
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>CSS-only scroll-driven animations are 🔥</h1>
+                    <p>Scroll-driven animation was something that we used to rely on JavaScript for, with the help of scroll listeners and intersection observers.</p>
+                    <p>Luckily for us, scroll-driven animations are coming to be a CSS feature, and they make life so much simpler and more performant.</p>
+                </div>
+            </section>
+            
+            <!-- Infinite Marquee -->
+            <div class="marquee">
+                <div class="track">
+                    <img src="Index assets/Marquee logos/Csharp_Logo.png" alt="C# Logo">
+                    <img src="Index assets/Marquee logos/CSS3_logo_and_wordmark.png" alt="CSS3 Logo">
+                    <img src="Index assets/Marquee logos/HTML5_logo_and_wordmark.png" alt="HTML5 Logo">
+                    <img src="Index assets/Marquee logos/ISO_C++_Logo.png" alt="C++ Logo">
+                    <img src="Index assets/Marquee logos/JavaScript-logo.png" alt="JavaScript Logo">
+                    <img src="Index assets/Marquee logos/MySQL_logo.png" alt="MySQL Logo">
+                    <img src="Index assets/Marquee logos/NET_Core_Logo.png" alt=".NET Core Logo">
+                    <img src="Index assets/Marquee logos/Node.js_logo.png" alt="Node.js Logo">
+                    <img src="Index assets/Marquee logos/PHP-logo.png" alt="PHP Logo">
+                    <img src="Index assets/Marquee logos/Python-logo-notext.png" alt="Python Logo">
+                    <img src="Index assets/Marquee logos/Rust_programming_language_black_logo.png" alt="Rust Logo">
+                    <img src="Index assets/Marquee logos/The_C_Programming_Language_logo.png" alt="C Logo">
+                    <!-- Duplicate for seamless effect -->
+                    <img src="Index assets/Marquee logos/Csharp_Logo.png" alt="C# Logo">
+                    <img src="Index assets/Marquee logos/CSS3_logo_and_wordmark.png" alt="CSS3 Logo">
+                    <img src="Index assets/Marquee logos/HTML5_logo_and_wordmark.png" alt="HTML5 Logo">
+                    <img src="Index assets/Marquee logos/ISO_C++_Logo.png" alt="C++ Logo">
+                    <img src="Index assets/Marquee logos/JavaScript-logo.png" alt="JavaScript Logo">
+                    <img src="Index assets/Marquee logos/MySQL_logo.png" alt="MySQL Logo">
+                    <img src="Index assets/Marquee logos/NET_Core_Logo.png" alt=".NET Core Logo">
+                    <img src="Index assets/Marquee logos/Node.js_logo.png" alt="Node.js Logo">
+                    <img src="Index assets/Marquee logos/PHP-logo.png" alt="PHP Logo">
+                    <img src="Index assets/Marquee logos/Python-logo-notext.png" alt="Python Logo">
+                    <img src="Index assets/Marquee logos/Rust_programming_language_black_logo.png" alt="Rust Logo">
+                    <img src="Index assets/Marquee logos/The_C_Programming_Language_logo.png" alt="C Logo">
+                </div>
+            </div>
+
+            <!-- Scroll Animation Sections -->
+            <section class="scroll-section">
+                <img src="Index assets/Scroll Animation images/download (3).jpeg" alt="Image 1">
+                <h2>State-of-the-Art Facilities</h2>
+                <p>Experience cutting-edge technology and modern facilities that provide an excellent learning environment.</p>
+            </section>
+            <section class="scroll-section">
+                <img src="Index assets/Scroll Animation images/download (4).jpeg" alt="Image 2">
+                <h2>Expert Faculty</h2>
+                <p>Learn from highly qualified and experienced professors who are dedicated to your success.</p>
+            </section>
+            <section class="scroll-section">
+                <img src="Index assets/Scroll Animation images/download (5).jpeg" alt="Image 3">
+                <h2>Global Recognition</h2>
+                <p>Join a prestigious institution with a global reputation for excellence in education.</p>
+            </section>
         </main>
     </div>
 
