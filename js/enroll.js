@@ -2,33 +2,35 @@ document.addEventListener('DOMContentLoaded', function() {
     emailjs.init("K5V_wyKvd9ZxgOuAf"); // Initialize EmailJS with your Public Key
     console.log('EmailJS is initialized:', emailjs);
 
+    const form = document.querySelector('.needs-validation');
+
     // Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-    'use strict'
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-  
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-  
-        form.classList.add('was-validated')
-      }, false)
-    })
-  })()
+    (() => {
+        'use strict'
+    
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+    
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
 
     document.getElementById('enrollForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
         const courseName = document.getElementById('courseName').value;
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
-        const email = document.getElementById('email').value.trim();
+        const firstName = document.getElementById('validationCustom01').value.trim();
+        const lastName = document.getElementById('validationCustom02').value.trim();
+        const email = document.getElementById('validationCustomUsername').value.trim();
         const errorMessage = document.getElementById('errorMessage');
 
         errorMessage.style.display = 'none';
@@ -48,19 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
             errorMessage.style.display = 'block';
             return;
         }
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-    
-          form.classList.add('was-validated')
-        }, false)
-        })
-        
 
         console.log(`Course Name: ${courseName}`);
         console.log(`First Name: ${firstName}`);
@@ -102,8 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('confirmationMessage').style.display = 'block';
             }
         }, 1000);
-          // Prepare the data to be sent
-          const templateParams = {
+
+        // Prepare the data to be sent
+        const templateParams = {
             course_name: courseName,
             to_name: firstName + " " + lastName,
             full_name: firstName + " " + lastName,
