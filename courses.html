@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belgium Campus ITversity</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="style.scss">
-    <link rel="stylesheet" href="css/courses.css">
+   
     <link rel="shortcut icon" href="pics/belgium campus logo.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="css/courses.css">
     <script defer src="js/courses.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -23,7 +22,7 @@
                       Belgium Campus ITversity 
                     </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler text-bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -35,9 +34,9 @@
                       <a class="nav-link active" href="contact.html">Contact Us</a>
                     </div>
 
-                    <form class="search-bar d-flex" role="search">
-                        <input class="form-control me-2" id="searchBar" type="search" placeholder="Enter course name" aria-label="Search">
-                        <button class="btn btn-outline-danger" type="submit">Search</button>
+                    <form class="search-bar d-flex" role="search" style="margin-left: 10px;">
+                        <input class="form-control" id="searchBar" type="search" placeholder="Enter a course or module" aria-label="Search">
+                        <button class="btn btn-outline-danger" type="submit" style="margin-left: 15px;">Search</button>
                     </form>
                 </div>
             </nav>
@@ -45,11 +44,11 @@
         <main class="container mt-5">
             <section id="searchResults" class="mt-4" style="display: none;">
                 <h2>Search Results</h2>
+                <button id="backButtonManagement" class="btn btn-warning mt-3 mb-3">Back to Course List</button> 
                 <div id="searchResultsContainer" class="row"></div>
             </section>
-            <div id="courseList" class="course-list row">
-                <!-- Courses will be listed here dynamically -->
-            </div>
+
+            <div id="courseList" class="course-list row"></div>
 
             <section id="details" class="mt-4" style="display: none;"> 
                 <h2>Course Details</h2>
@@ -64,26 +63,19 @@
                 <h2>Course Management</h2>
                 <div id="managementContainer" class="row">
                     <div id="moduleContainer" class="col-md-4 d-flex flex-column align-items-start">
-                        <div id="moduleList">
-                            <!-- List of modules will be inserted here dynamically -->
-                        </div>
+                        <div id="moduleList"></div>
                     </div>
                     <div class="progress-section col-md-4">
-                        <div id="overallProgressTracker" class="mb-4">
-                            <!-- Overall progress bar will be inserted here dynamically -->
-                        </div>
-                        <div id="progressTrackers">
-                            <!-- Progress bars for each year will be dynamically inserted here -->
-                        </div>
+                        <div id="overallProgressTracker" class="mb-4"></div>
+                        <div id="progressTrackers"></div>
                     </div>
-                    <div id="completedModulesList" class="col-md-4 mt-3">
-                        <!-- Completed modules will be listed here -->
-                    </div>
+                    <div id="completedModulesList" class="col-md-4 mt-3"></div>
                 </div>
             </section>
         </main>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <footer>
+        N.B This is a fake site created by the none legally infringing Super Mario Bros
+    </footer>
 </body>
 </html>

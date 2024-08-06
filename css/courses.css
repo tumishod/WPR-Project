@@ -31,3 +31,13 @@ th {
     margin-top: 0.5em;
 }
 
+footer{
+    margin: auto;
+    width: 100%;
+
+    background-color: black;
+    padding-top: 40px;
+    text-align: center;
+    height: 100px;
+}
+

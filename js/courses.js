@@ -262,9 +262,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const courseDetails = document.getElementById('courseDetails');
 
         let tableContent = `
-            <table class="table table-warning table-striped">
+            <table class="table table-dark table-striped">
                 <thead>
-                    <tr class="table-warning">
+                    <tr class="table-light">
                         <th>Year</th>
                         <th>Modules</th>
                         <th>Lecturers</th>
