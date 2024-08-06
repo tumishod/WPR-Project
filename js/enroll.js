@@ -1,6 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     emailjs.init("K5V_wyKvd9ZxgOuAf"); // Initialize EmailJS with your Public Key
     console.log('EmailJS is initialized:', emailjs);
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+
     document.getElementById('enrollForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -27,6 +48,19 @@ document.addEventListener('DOMContentLoaded', function() {
             errorMessage.style.display = 'block';
             return;
         }
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+    
+          form.classList.add('was-validated')
+        }, false)
+        })
+        
 
         console.log(`Course Name: ${courseName}`);
         console.log(`First Name: ${firstName}`);
