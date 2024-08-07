@@ -52,18 +52,66 @@ header img {
     margin: 10px auto;
 }
 
-/* Infinite marquee style */
+/* Scroller style */
+.scroller {
+    max-width: 600px;
+}
+
+.scroller__inner {
+    padding-block: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.scroller[data-animated="true"] {
+    overflow: hidden;
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+    flex-wrap: nowrap;
+    animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* Scroller animations */
+.scroller[data-direction="right"] {
+    --animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] {
+    --animation-direction: forwards;
+}
+
+/* Keyframes for background color shift */
+@keyframes bg-shift {
+    from { background-color: red; }
+    to { background-color: yellow; }
+}
+
+/* Keyframes for scrolling effect */
+@keyframes scrolling {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-50% - 0.5rem));
+    }
+}
+/* Infinite marquee style for footer */
 .marquee {
     width: 100%;
     overflow: hidden;
     position: relative;
-    margin-bottom: 20px;
+    background-color: #444;
+    padding: 10px 0;
 }
 
 .track {
     display: flex;
-    width: calc(100px * 12); /* Adjust the width based on the number of images */
-    animation: scroll 30s linear infinite;
+    width: calc(1273px * 24); /* Adjust the width based on the number of images */
+    animation: scroll 10s linear infinite;
 }
 
 .track img {
@@ -77,7 +125,7 @@ header img {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-100px * 12)); /* Move left by the width of 12 images */
+        transform: translateX(calc(-80px * 12)); /* Move left by the width of 12 images */
     }
 }
 
