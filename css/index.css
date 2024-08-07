@@ -29,7 +29,7 @@ header img {
 
 /* Styles for the hero section */
 .hero-section {
-    background: url('pics/hero.jpeg') no-repeat center center/cover;
+   /* background: url('../pics/hero.jpeg') no-repeat center center/cover;*/
     height: 100vh;
     display: flex;
     align-items: center;
@@ -39,6 +39,13 @@ header img {
     color: white;
     padding: 20px;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    border: 2px solid red; /* Add this line */
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    border: 2px solid blue; /* Add this line */
 }
 
 .hero-content h1 {
@@ -50,8 +57,32 @@ header img {
     font-size: 1.2rem;
     max-width: 800px;
     margin: 10px auto;
+    
+}
+.article-header {
+    display: grid;
+    place-items: center;
+    position: relative;
+    height: 100svh;
+    overflow-x: clip;
+    padding-block: 7rem;
+    margin-block-end: 3rem;
+   
 }
 
+.header-image {
+    grid-column: 1 / -1 !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    object-fit: cover;
+    z-index: -1;
+}
+@keyframes fade-out {
+    to {opacity:0;}
+} 
 /* Scroller style */
 .scroller {
     max-width: 600px;
@@ -137,7 +168,7 @@ section {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    opacity: 0;
+    
     transform: translateY(20px);
     transition: opacity 2s ease-out, transform 2s ease-out;
 }
