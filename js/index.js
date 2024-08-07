@@ -2,10 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const logoContainer = document.getElementById('logoContainer');
     const mainContent = document.getElementById('mainContent');
     const introAudio = document.getElementById('introAudio'); // Get the audio element
-     // Hide main content initially
-     mainContent.style.display = 'none';
 
-     // Function to start the intro audio
+    // Hide main content initially
+    mainContent.style.display = 'none';
+
+    // Function to start the intro audio
     function playIntroAudio() {
         introAudio.play().catch(error => {
         });
@@ -37,4 +38,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            console.log('Observed entry:', entry); // Debug log
+            if (entry.isIntersecting) {
+                console.log('In view, adding show class to:', entry.target);
+                entry.target.classList.add('show');
+            } else {
+                console.log('Out of view, removing show class from:', entry.target);
+                entry.target.classList.remove('show');
+            }
+        });
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach(el => {
+        console.log('Observing:', el); // Debug log
+        observer.observe(el);
+    });
 });
