@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
             playIntroAudio();
             logoContainer.classList.add('fade-out');
             logoContainer.addEventListener('transitionend', () => {
-                logoContainer.classList.add('d-none'); // Hide logo container
-                mainContent.classList.remove('d-none'); // Show main content
-                mainContent.classList.add('fade-in'); // Optional fade-in effect
+                logoContainer.classList.add('d-none'); // Hiding our logo container
+                mainContent.classList.remove('d-none'); // Showing main content
+                mainContent.classList.add('fade-in'); // fade-in effect
             }, { once: true });
-        }, 2500); // Adjust the timing as needed
+        }, 2500); 
     }
 
     // Handle search form submission
