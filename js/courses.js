@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const courseManagementLink = document.getElementById('modulesLink');
     const backButtonDetails = document.getElementById('backButtonDetails');
     const backButtonManagement = document.getElementById('backButtonManagement');
+    const backButtonSearch = document.getElementById('backButtonSearch');
     const searchForm = document.querySelector('.search-bar');
     const searchBar = document.getElementById('searchBar');
 
@@ -87,6 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for the "Back" button in the management section
     if (backButtonManagement) {
         backButtonManagement.addEventListener('click', function(event) {
+            event.preventDefault();
+            hideAllSections();
+            window.location.href = 'courses.html'; // Redirect to courses page without search query
+        });
+    }
+    if (backButtonSearch) {
+        backButtonSearch.addEventListener('click', function(event) {
             event.preventDefault();
             hideAllSections();
             window.location.href = 'courses.html'; // Redirect to courses page without search query
