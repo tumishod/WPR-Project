@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="js/index.js"></script>
 </head>
-<body class="text-bg-dark p-3">
+<body class="text-bg-dark">
     <div id="logoContainer" class="d-flex align-items-center justify-content-center vh-100 position-relative">
         <img src="pics/download (1).png" id="logoImage" class="img-fluid" alt="Logo">
         <div id="loadingIndicator" class="position-absolute bottom-0 start-50 translate-middle-x">
@@ -21,102 +21,109 @@
     </div>
     <audio id="introAudio" src="Wii Theme - QuickSounds.com.mp3"></audio>
     <div id="mainContent" class="fade-in">
-        <header class="article-header">
-            <section class="hero-section">
-                <div class="hero-content">
-                    <h1>CSS-only scroll-driven animations are 🔥</h1>
-                    <p>Scroll-driven animation was something that we used to rely on JavaScript for, with the help of scroll listeners and intersection observers.</p>
-                    <p>Luckily for us, scroll-driven animations are coming to be a CSS feature, and they make life so much simpler and more performant.</p>
+        <header class="position-relative vh-100">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100 z-index-3">
+                <a class="navbar-brand" href="index.html">
+                    <img src="pics/logo2.png" alt="Home" style="height: 40px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <a class="nav-link active" href="index.html">Home</a>
+                      <a class="nav-link" href="enroll.html">Enroll</a>
+                      <a class="nav-link" href="courses.html">Courses</a>
+                      <a class="nav-link" href="Contact.html">Contact Us</a>
+                    </div>
                 </div>
-                <img class="header-image" src="pics/hero.jpeg" alt="Hero Image">
-            </section>
+            </nav>
+            <img class="header-image img-fluid w-100 h-100 position-absolute top-0 start-0" src="pics/hero.jpeg" alt="Hero Image">
+            <div class="container position-relative z-index-2 text-center text-white d-flex flex-column justify-content-center h-100">
+                <h1>CSS-only scroll-driven animations are 🔥</h1>
+                <p>Scroll-driven animation was something that we used to rely on JavaScript for, with the help of scroll listeners and intersection observers.</p>
+                <p>Luckily for us, scroll-driven animations are coming to be a CSS feature, and they make life so much simpler and more performant.</p>
+            </div>
         </header>
-        <nav class="navbar navbar-expand-lg text-bg-secondary p-3 border-bottom border-danger">
-            <a class="navbar-brand" href="index.html">
-                <img src="pics/logo2.png" alt="Home" style="height: 40px;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link active" href="index.html">Home</a>
-                  <a class="nav-link" href="enroll.html">Enroll</a>
-                  <a class="nav-link" href="courses.html">Courses</a>
-                  <a class="nav-link" href="Contact.html">Contact Us</a>
+        <main class="container mt-5">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <div class="card bg-dark text-white position-relative">
+                        <img src="Index assets/Scroll Animation images/download (3).jpeg" class="card-img img-fluid w-100" alt="State-of-the-Art Facilities">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center">
+                            <h2 class="card-title text-center">State-of-the-Art Facilities</h2>
+                            <p class="card-text text-center">Experience cutting-edge technology and modern facilities that provide an excellent learning environment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-5">
+                    <div class="card bg-dark text-white position-relative">
+                        <img src="Index assets/Scroll Animation images/download (4).jpeg" class="card-img img-fluid w-100" alt="Enroll at Belgium Campus">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center">
+                            <h2 class="card-title text-center">Enroll at Belgium Campus</h2>
+                            <p class="card-text text-center">Welcome to Belgium Campus, where your future begins. Our institution offers a variety of programs designed to equip you with the skills needed to excel in your chosen field.</p>
+                            <div class="scroller" data-direction="left">
+                                <ul class=" tag-list scroller__inner">
+                                    <li>Python</li>
+                                    <li>JavaScript</li>
+                                    <li>Java</li>
+                                    <li>C#</li>
+                                    <li>PHP</li>
+                                    <li>Ruby</li>
+                                    <li>Swift</li>
+                                    <li>Kotlin</li>
+                                    <li>Go</li>
+                                    <li>TypeScript</li>
+                                    <li>Python</li>
+                                    <li>JavaScript</li>
+                                    <li>Java</li>
+                                    <li>C#</li>
+                                    <li>PHP</li>
+                                    <li>Ruby</li>
+                                    <li>Swift</li>
+                                    <li>Kotlin</li>
+                                    <li>Go</li>
+                                    <li>TypeScript</li>
+                                </ul>
+                            </div>
+                            <div class="scroller" data-direction="right">
+                                <ul class="tag-list scroller__inner">
+                                    <li>Python</li>
+                                    <li>JavaScript</li>
+                                    <li>Java</li>
+                                    <li>C#</li>
+                                    <li>PHP</li>
+                                    <li>Ruby</li>
+                                    <li>Swift</li>
+                                    <li>Kotlin</li>
+                                    <li>Go</li>
+                                    <li>TypeScript</li>
+                                    <li>Python</li>
+                                    <li>JavaScript</li>
+                                    <li>Java</li>
+                                    <li>C#</li>
+                                    <li>PHP</li>
+                                    <li>Ruby</li>
+                                    <li>Swift</li>
+                                    <li>Kotlin</li>
+                                    <li>Go</li>
+                                    <li>TypeScript</li>
+                                </ul>
+                            </div>
+                            <p>Our dedicated faculty and state-of-the-art facilities provide an ideal learning environment for our students. Whether you are interested in technology, business, or the arts, Belgium Campus has the right program for you.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-5">
+                    <div class="card bg-dark text-white position-relative">
+                        <img src="Index assets/Scroll Animation images/download (5).jpeg" class="card-img img-fluid w-100" alt="Global Recognition">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center">
+                            <h2 class="card-title text-center">Global Recognition</h2>
+                            <p class="card-text text-center">Join a prestigious institution with a global reputation for excellence in education.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <main class="container mt-5">
-            
-            
-            <!-- Scroll Animation Sections -->
-            <section class="hidden">
-                <img src="Index assets/Scroll Animation images/download (3).jpeg" alt="Image 1">
-                <h2>State-of-the-Art Facilities</h2>
-                <p>Experience cutting-edge technology and modern facilities that provide an excellent learning environment.</p>
-            </section>
-            <section class="hidden">
-                <h2>Enroll at Belgium Campus</h2>
-                <p>Welcome to Belgium Campus, where your future begins. Our institution offers a variety of programs designed to equip you with the skills needed to excel in your chosen field.</p>
-                <div class="scroller" data-direction="left">
-                    <ul class=" tag-list scroller__inner">
-                        <li>Python</li>
-                        <li>JavaScript</li>
-                        <li>Java</li>
-                        <li>C#</li>
-                        <li>PHP</li>
-                        <li>Ruby</li>
-                        <li>Swift</li>
-                        <li>Kotlin</li>
-                        <li>Go</li>
-                        <li>TypeScript</li>
-                        <li>Python</li>
-                        <li>JavaScript</li>
-                        <li>Java</li>
-                        <li>C#</li>
-                        <li>PHP</li>
-                        <li>Ruby</li>
-                        <li>Swift</li>
-                        <li>Kotlin</li>
-                        <li>Go</li>
-                        <li>TypeScript</li>
-                    </ul>
-                </div>
-                <div class="scroller" data-direction="right">
-                    <ul class="tag-list scroller__inner">
-                        <li>Python</li>
-                        <li>JavaScript</li>
-                        <li>Java</li>
-                        <li>C#</li>
-                        <li>PHP</li>
-                        <li>Ruby</li>
-                        <li>Swift</li>
-                        <li>Kotlin</li>
-                        <li>Go</li>
-                        <li>TypeScript</li>
-                        <li>Python</li>
-                        <li>JavaScript</li>
-                        <li>Java</li>
-                        <li>C#</li>
-                        <li>PHP</li>
-                        <li>Ruby</li>
-                        <li>Swift</li>
-                        <li>Kotlin</li>
-                        <li>Go</li>
-                        <li>TypeScript</li>
-                    </ul>
-                </div>
-                <p>Our dedicated faculty and state-of-the-art facilities provide an ideal learning environment for our students. Whether you are interested in technology, business, or the arts, Belgium Campus has the right program for you.</p>
-                <img src="Index assets/Scroll Animation images/download (4).jpeg" alt="Image 2">
-                <h2>Expert Faculty</h2>
-                <p>Learn from highly qualified and experienced professors who are dedicated to your success.</p>
-            </section>
-            <section class="hidden">
-                <img src="Index assets/Scroll Animation images/download (5).jpeg" alt="Image 3">
-                <h2>Global Recognition</h2>
-                <p>Join a prestigious institution with a global reputation for excellence in education.</p>
-            </section>
         </main>
         <footer>
             <div class="marquee">
