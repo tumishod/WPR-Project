@@ -46,9 +46,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 console.log('In view, adding show class to:', entry.target);
                 entry.target.classList.add('show');
+                // Trigger the header image animation if it's the header image
+                if (entry.target.classList.contains('header-image')) {
+                    entry.target.classList.add('animate-header-image');
+                }
             } else {
                 console.log('Out of view, removing show class from:', entry.target);
                 entry.target.classList.remove('show');
+                // Remove the header image animation if it's out of view
+                if (entry.target.classList.contains('header-image')) {
+                    entry.target.classList.remove('animate-header-image');
+                }
             }
         });
     });
