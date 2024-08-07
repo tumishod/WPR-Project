@@ -200,6 +200,7 @@ section p {
     opacity: 0;
     filter: blur(5px);
     transform: translateX(-100%);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .show {
