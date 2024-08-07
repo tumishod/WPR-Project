@@ -4,15 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Shared resources for all modules
     const studyGuides = {
-        'Diploma': 'WPR 271 Study Guide [2024] v1.4.pdf',
-        'BIT': 'WPR 271 Study Guide [2024] v1.4.pdf',
-        'BCOM': 'WPR 271 Study Guide [2024] v1.4.pdf'
+        'Diploma in Information Technology (DIT)': 'WPR 271 Study Guide [2024] v1.4.pdf',
+        'Bachelor in Information Technology (BIT)': 'WPR 271 Study Guide [2024] v1.4.pdf',
+        'Bachelor of Computing (BCOM)': 'WPR 271 Study Guide [2024] v1.4.pdf'
     };
 
     const videoLinks = {
-        'Diploma': 'https://youtu.be/dQw4w9WgXcQ?si=r6_zAR0mF9JR9LjV',
-        'BIT': 'https://youtu.be/dQw4w9WgXcQ?si=r6_zAR0mF9JR9LjV',
-        'BCOM': 'https://youtu.be/dQw4w9WgXcQ?si=r6_zAR0mF9JR9LjV'
+        'Diploma in Information Technology (DIT)': 'https://youtu.be/dQw4w9WgXcQ?si=r6_zAR0mF9JR9LjV',
+        'Bachelor in Information Technology (BIT)': 'https://youtu.be/dQw4w9WgXcQ?si=r6_zAR0mF9JR9LjV',
+        'Bachelor of Computing (BCOM)': 'https://youtu.be/dQw4w9WgXcQ?si=r6_zAR0mF9JR9LjV'
     };
 
     // Function to hide all sections initially
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const courses = [
         { id: 1, title: 'Diploma in Information Technology (DIT)', code: 'DIT456', duration: '2 & 1 years', NQFlevel: '6', description: 'Diploma in Information Technology' },
         { id: 2, title: 'Bachelor in Information Technology (BIT)', code: 'BIT789', duration: '3 years', NQFlevel: '7', description: 'Bachelor of Information Technology' },
-        { id: 3, title: 'Bachelor in Computing (BCOM)', code: 'BCOM101', duration: '4 years', NQFlevel: '8', description: 'Bachelor of Computing' }
+        { id: 3, title: 'Bachelor of Computing (BCOM)', code: 'BCOM101', duration: '4 years', NQFlevel: '8', description: 'Bachelor of Computing' }
     ];
 
     // Object containing detailed course data, including years, modules, lecturers, and venue
@@ -276,11 +276,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         Object.keys(details.years).forEach(year => {
             const modules = details.years[year].map(mod => {
+                const studyGuideLink = studyGuides[details.title];
+                const videoLink = videoLinks[details.title];
                 return `
                     <div>
                         <strong>${mod}</strong><br>
-                        <a href="${studyGuides[details.title]}" class="download-link" target="_blank" link-danger>Download Study Guide</a><br>
-                        <a href="${videoLinks[details.title]}" class="video-link" target="_blank" "link-danger">Introduction video to module</a>
+                        <a href="${studyGuideLink}" class="download-link" target="_blank">Download Study Guide</a><br>
+                        <a href="${videoLink}" class="video-link" target="_blank">Introduction video to module</a>
                     </div>
                 `;
             }).join('<br>');
